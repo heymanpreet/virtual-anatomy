@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support https://github.com/AR-js-org/AR.js-->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <title>Virtual Anatomy App</title>
+
+</head>
+
+<body>
+    <model-viewer id="pickMaterial" camera-controls src="assests/models/heart-model.glb" ar ar-modes="webxr scene-viewer" scale="0.001 0.001 0.001" alt="A Material Picking Example">
+    </model-viewer>
+    <script type="module">
+    const modelViewer = document.querySelector("model-viewer#pickMaterial");
+    
+    modelViewer.addEventListener("load", () => {
+    
+      const changeColor = async (event) => {
+          console.log(event.clientX,event.clientY,event);
+        let material = modelViewer.materialFromPoint(event.clientX, event.clientY);
+        console.log(material);
+    
+        if(material != null) {
+          material.pbrMetallicRoughness.
+            setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+          material.name = "Test"
+        }
+      }
+    
+      modelViewer.addEventListener("click", changeColor);
+    
+    });
+    
+    </script>
+
+</body>
+
+</html>

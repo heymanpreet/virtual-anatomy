@@ -20,8 +20,8 @@
 }
 </style>
 <body>
-<!--     <a-scene> -->
-<!--         <a-sky color="#6EBAA7"></a-sky> -->
+    <a-scene>
+        <a-sky color="#6EBAA7"></a-sky>
 <!--     <model-viewer id="pickMaterial" camera-controls src="assests/models/heart-model.glb" ar ar-modes="webxr scene-viewer" scale="0.001 0.001 0.001" alt="A Material Picking Example" style="z-index: 1;">
     </model-viewer> -->
         <model-viewer id="pickMaterial" bounds="tight" src="assests/models/humantestobj.obj" ar
@@ -31,7 +31,7 @@
             View in your space
         </button>
             </model-viewer>
-<!--         </a-scene> -->
+        </a-scene>
     <script type="module">
     const modelViewer = document.querySelector("model-viewer#pickMaterial");
     

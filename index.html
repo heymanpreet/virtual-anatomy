@@ -9,14 +9,29 @@
     <!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <!-- we import arjs version without NFT but with marker + location based support https://github.com/AR-js-org/AR.js-->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<!--     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
     <title>Virtual Anatomy App</title>
 
 </head>
-
+<style>
+    model-viewer {
+    width: 90vw !important;
+    height: 90vh !important;
+}
+</style>
 <body>
-    <model-viewer id="pickMaterial" camera-controls src="assests/models/heart-model.glb" ar ar-modes="webxr scene-viewer" scale="0.001 0.001 0.001" alt="A Material Picking Example">
-    </model-viewer>
+    <a-scene>
+        <a-sky color="#6EBAA7"></a-sky>
+<!--     <model-viewer id="pickMaterial" camera-controls src="assests/models/heart-model.glb" ar ar-modes="webxr scene-viewer" scale="0.001 0.001 0.001" alt="A Material Picking Example" style="z-index: 1;">
+    </model-viewer> -->
+        <model-viewer id="pickMaterial" bounds="tight" src="assests/models/humantestobj.obj" ar
+        ar-modes="webxr scene-viewer quick-look" camera-controls poster="assests/models/model/poster.webp"
+        shadow-intensity="2" exposure="0.81" shadow-softness="0" auto-rotate camera-orbit="-248.8deg 86.36deg auto" style="z-index: 1;">
+         <button slot="ar-button" id="ar-button">
+            View in your space
+        </button>
+            </model-viewer>
+        </a-scene>
     <script type="module">
     const modelViewer = document.querySelector("model-viewer#pickMaterial");
     
